@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: jsonplaceholder
+          uri: https://jsonplaceholder.typicode.com
+          predicates:
+            - Path=/jsonplaceholder/**
+          filters:
+            - RewritePath=/jsonplaceholder/(?<segment>.*),/$\{segment}
+            - ResponseJsonBodyViews
+
+filters:
+  response-body-views:
+    path-to-view-mapping: # order == priority
+      - path-pattern: "/jsonplaceholder/todos"
+        view-class: de.sluit.gateway.views.jsonplaceholder.TodoItemView
+      - path-pattern: "/jsonplaceholder/todos/\\d+"
+        view-class: de.sluit.gateway.views.jsonplaceholder.TodoItemView
