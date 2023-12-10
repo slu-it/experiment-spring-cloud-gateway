@@ -1,4 +1,4 @@
-package de.sluit.gateway.filters
+package de.sluit.gateway.filters.view
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration

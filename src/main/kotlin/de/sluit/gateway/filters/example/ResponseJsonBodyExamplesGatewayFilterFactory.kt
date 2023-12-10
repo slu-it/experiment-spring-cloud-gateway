@@ -1,4 +1,4 @@
-package de.sluit.gateway.filters
+package de.sluit.gateway.filters.example
 
 import com.fasterxml.jackson.databind.JsonNode
 import jakarta.annotation.PostConstruct
@@ -8,9 +8,9 @@ import org.springframework.cloud.gateway.filter.factory.rewrite.ModifyResponseBo
 import org.springframework.stereotype.Component
 
 @Component
-class ResponseJsonBodyViewsGatewayFilterFactory(
+class ResponseJsonBodyExamplesGatewayFilterFactory(
     private val filterFactory: ModifyResponseBodyGatewayFilterFactory,
-    private val properties: ResponseJsonBodyViewsFilterProperties
+    private val properties: ResponseJsonBodyExamplesFilterProperties
 ) : AbstractGatewayFilterFactory<Any>(Any::class.java) {
 
     @PostConstruct
@@ -20,6 +20,10 @@ class ResponseJsonBodyViewsGatewayFilterFactory(
 
     override fun apply(config: Any?): GatewayFilter =
         filterFactory.apply { c ->
-            c.setRewriteFunction(JsonNode::class.java, Any::class.java, ResponseJsonBodyViewRewriteFunction(properties))
+            c.setRewriteFunction(
+                JsonNode::class.java,
+                JsonNode::class.java,
+                ResponseJsonBodyExamplesRewriteFunction(properties)
+            )
         }
 }

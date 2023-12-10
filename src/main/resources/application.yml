@@ -8,7 +8,7 @@ spring:
             - Path=/jsonplaceholder/**
           filters:
             - RewritePath=/jsonplaceholder/(?<segment>.*),/$\{segment}
-            - ResponseJsonBodyViews
+            - ResponseJsonBodyExamples
 
 filters:
   response-body-views:
@@ -17,3 +17,9 @@ filters:
         view-class: de.sluit.gateway.views.jsonplaceholder.TodoItemView
       - path-pattern: "/jsonplaceholder/todos/\\d+"
         view-class: de.sluit.gateway.views.jsonplaceholder.TodoItemView
+  response-body-examples:
+    path-to-example-mapping: # order == priority
+      - path-pattern: "/jsonplaceholder/todos"
+        example-file-path: "/examples/todo-items.json"
+      - path-pattern: "/jsonplaceholder/todos/\\d+"
+        example-file-path: "/examples/todo-item.json"

@@ -1,9 +1,9 @@
-package de.sluit.gateway.filters
+package de.sluit.gateway.filters.view
 
 import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import de.sluit.gateway.filters.ResponseJsonBodyViewsFilterProperties.Mapping
+import de.sluit.gateway.filters.view.ResponseJsonBodyViewsFilterProperties.Mapping
 import org.reactivestreams.Publisher
 import org.springframework.cloud.gateway.filter.factory.rewrite.RewriteFunction
 import org.springframework.web.server.ServerWebExchange
@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono
 // this is not streaming ready!
 // definitely need a different approach for for big lists etc.
 
-class ResponseJsonBodyViewRewriteFunction(
+class ResponseJsonBodyViewsRewriteFunction(
     private val properties: ResponseJsonBodyViewsFilterProperties
 ) : RewriteFunction<JsonNode, Any> {
 
