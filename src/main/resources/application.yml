@@ -23,3 +23,7 @@ filters:
         example-file-path: "/examples/todo-items.json"
       - path-pattern: "/jsonplaceholder/todos/\\d+"
         example-file-path: "/examples/todo-item.json"
+      - path-pattern: "/jsonplaceholder/users"
+        example-file-path: "/examples/users.json"
+      - path-pattern: "/jsonplaceholder/users/\\d+"
+        example-file-path: "/examples/user.json"
